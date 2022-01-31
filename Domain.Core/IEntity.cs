@@ -1,6 +1,6 @@
 ﻿namespace Domain.Core;
 
-public interface Entity
+public interface IEntity
 {
-    int Id;
+    int Id { get; }
 }
