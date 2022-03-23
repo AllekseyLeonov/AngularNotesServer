@@ -5,7 +5,7 @@ namespace Domain.Interfaces;
 
 public interface IGenericRepository<T> where T : IEntity
 {
-    Task<T> GetAsync(int id);
+    Task<T> GetAsync(Guid id);
     Task CreateAsync(T t);
     Task UpdateAsync(T t);
     Task DeleteAsync(T t);

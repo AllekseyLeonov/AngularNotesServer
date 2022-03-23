@@ -1,7 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Domain.Core;
 using Domain.Interfaces;
-using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace Database;
@@ -14,12 +13,8 @@ public class GenericRepository<T> : IGenericRepository<T> where T : IEntity
     {
         _context = context;
     }
-
-    private bool filterFunction(int id1, int id2)
-    {
-        return id1 == id2;
-    }
-    public async Task<T> GetAsync(int id)
+    
+    public async Task<T> GetAsync(Guid id)
     {
         return (T) await _context.Database.GetCollection<T>(typeof(T).ToString()).Find(doc => doc.Id == id).FirstOrDefaultAsync();
     }

@@ -1,4 +1,4 @@
-﻿using Domain.Core;
+﻿using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 
 namespace Database;
@@ -7,9 +7,9 @@ public class ApplicationContext
 {
     public readonly IMongoDatabase Database;
 
-    public ApplicationContext()
+    public ApplicationContext(IConfiguration configuration)
     {
-        string connectionString = "mongodb://localhost:27017/notes";
+        string connectionString = configuration.GetConnectionString("MongoDb");
         var connection = new MongoUrlBuilder(connectionString);
         MongoClient client = new MongoClient(connectionString);
         Database = client.GetDatabase(connection.DatabaseName);

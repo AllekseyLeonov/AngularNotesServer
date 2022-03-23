@@ -23,7 +23,7 @@ public class NoteService : INoteService
         return note;
     }
 
-    public async Task<Note> DeleteNote(int noteId)
+    public async Task<Note> DeleteNote(Guid noteId)
     {
         var note = _unitOfWork.Notes.GetAsync(noteId).Result;
         await _unitOfWork.Notes.DeleteAsync(note);
@@ -36,10 +36,8 @@ public class NoteService : INoteService
         return note;
     }
 
-    public async Task<int> GenerateNewId()
+    public async Task<Guid> GenerateNewId()
     {
-        var notes = _unitOfWork.Notes.GetAllAsync().Result;
-        int maxId = notes.Count>0 ? notes.Max(note => note.Id) : 0;
-        return maxId + 1;
+        return new Guid();
     }
 }

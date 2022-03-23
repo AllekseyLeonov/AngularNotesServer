@@ -6,7 +6,7 @@ public interface INoteService
 {
     List<Note> GetNotes();
     Task<Note> CreateNote(Note note);
-    Task<Note> DeleteNote(int noteId);
+    Task<Note> DeleteNote(Guid noteId);
     Task<Note> EditNote(Note note);
-    Task<int> GenerateNewId();
+    Task<Guid> GenerateNewId();
 }

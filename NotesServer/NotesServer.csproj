@@ -11,7 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Database\Database.csproj" />
+      <ProjectReference Include="..\Context\Context.csproj" />
       <ProjectReference Include="..\Domain.Interfaces\Domain.Interfaces.csproj" />
       <ProjectReference Include="..\Services.Interfaces\Services.Interfaces.csproj" />
       <ProjectReference Include="..\Services\Services.csproj" />

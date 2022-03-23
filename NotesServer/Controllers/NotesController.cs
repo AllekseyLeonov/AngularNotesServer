@@ -16,8 +16,7 @@ public class NotesController : ControllerBase
         _noteService = noteService;
     }
 
-    [HttpGet("/notes")]
-
+    [HttpGet("/getAll")]
     public List<Note> GetNotes()
     {
         return _noteService.GetNotes();
@@ -37,9 +36,9 @@ public class NotesController : ControllerBase
     }
 
     [HttpDelete("/deleteNote")]
-    public async Task<Note> DeleteNote(int noteId)
+    public async Task<Note> DeleteNote(string noteId)
     {
-        return await _noteService.DeleteNote(noteId);
+        return await _noteService.DeleteNote(Guid.Parse(noteId));
     }
     
     [HttpPatch("/editNote")]

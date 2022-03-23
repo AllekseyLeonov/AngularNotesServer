@@ -11,7 +11,6 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<ApplicationContext>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
-builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<INoteService, NoteService>();
 builder.Services.AddCors(options =>
 {

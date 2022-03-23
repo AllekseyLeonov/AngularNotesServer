@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Interfaces", "Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{80D50DE2-4178-42FC-8586-C454CF57BFF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{F0BA7380-2C8C-4492-8849-3FC05E338BD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Context", "Context\Context.csproj", "{F0BA7380-2C8C-4492-8849-3FC05E338BD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
