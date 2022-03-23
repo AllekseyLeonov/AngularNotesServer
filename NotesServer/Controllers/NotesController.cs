@@ -1,7 +1,8 @@
 ﻿using Domain.Core;
+using Features.Commands.NotesCommands;
+using Features.Queries.NotesQueries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using NotesServer.DTOs;
-using Services.Interfaces;
 
 namespace NotesServer.Controllers;
 
@@ -9,41 +10,42 @@ namespace NotesServer.Controllers;
 [Route("[controller]")]
 public class NotesController : ControllerBase
 {
-    private readonly INoteService _noteService;
+    private readonly IMediator _mediator;
 
-    public NotesController(INoteService noteService)
+    public NotesController(IMediator mediator)
     {
-        _noteService = noteService;
+        _mediator = mediator;
     }
 
     [HttpGet("/getAll")]
-    public List<Note> GetNotes()
+    public async Task<IEnumerable<Note>> GetNotes()
     {
-        return _noteService.GetNotes();
+        var query = new GetAllNotesQuery();
+        var response = await _mediator.Send(query);
+        return response;
     }
 
     [HttpPost("/createNote")]
-    public async Task<Note> AddNote(CreateRequestNoteDto noteDto)
+    public async Task<Note> AddNote(CreateNoteDto noteDto)
     {
-        var note = new Note
-        {
-            Id = await _noteService.GenerateNewId(),
-            Title = noteDto.Title,
-            Description = noteDto.Description,
-            Date = DateOnly.FromDateTime(DateTime.Now).ToString()
-        };
-        return await _noteService.CreateNote(note);
+        var command = new CreateNoteCommand(noteDto);
+        var response = await _mediator.Send(command);
+        return response;
     }
 
     [HttpDelete("/deleteNote")]
     public async Task<Note> DeleteNote(string noteId)
     {
-        return await _noteService.DeleteNote(Guid.Parse(noteId));
+        var command = new DeleteNoteCommand(Guid.Parse(noteId));
+        var response = await _mediator.Send(command);
+        return response;
     }
     
     [HttpPatch("/editNote")]
     public async Task<Note> EditNote(Note note)
     {
-        return await _noteService.EditNote(note);
+        var command = new EditNoteCommand(note);
+        var response = await _mediator.Send(command);
+        return response;
     }
 }

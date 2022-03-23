@@ -7,7 +7,16 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Folder Include="Queries" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" Version="10.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\Domain.Core\Domain.Core.csproj" />
+      <ProjectReference Include="..\Domain.Interfaces\Domain.Interfaces.csproj" />
     </ItemGroup>
 
 </Project>

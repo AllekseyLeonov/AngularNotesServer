@@ -1,17 +1,19 @@
+using System.Reflection;
 using Database;
 using Domain.Interfaces;
-using Services;
-using Services.Interfaces;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSingleton<ApplicationContext>();
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddMediatR(Assembly.Load("Features"));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<ApplicationContext>();
-builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
-builder.Services.AddTransient<INoteService, NoteService>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("devCorsPolicy", policy => {
