@@ -7,17 +7,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Application\Application.csproj" />
       <ProjectReference Include="..\Features\Features.csproj" />
-      <ProjectReference Include="..\Handlers\Handlers.csproj" />
-      <ProjectReference Include="..\Context\Context.csproj" />
-      <ProjectReference Include="..\Domain.Interfaces\Domain.Interfaces.csproj" />
-      <ProjectReference Include="..\Queries\Queries.csproj" />
-      <ProjectReference Include="..\Services.Interfaces\Services.Interfaces.csproj" />
-      <ProjectReference Include="..\Services\Services.csproj" />
+      <ProjectReference Include="..\Persistence\Persistence.csproj" />
     </ItemGroup>
 
 </Project>

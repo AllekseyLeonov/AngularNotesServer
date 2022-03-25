@@ -1,8 +1,8 @@
-﻿using Domain.Core;
-using Features.Commands.NotesCommands;
-using Features.Queries.NotesQueries;
+﻿using Application.Actions.Notes;
+using Domain;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using NotesServer.DTOs;
 
 namespace NotesServer.Controllers;
 
@@ -26,9 +26,9 @@ public class NotesController : ControllerBase
     }
 
     [HttpPost("/createNote")]
-    public async Task<Note> AddNote(CreateNoteDto noteDto)
+    public async Task<Note> AddNote(NoteDto noteDto)
     {
-        var command = new CreateNoteCommand(noteDto);
+        var command = new CreateNoteCommand(noteDto.Title, noteDto.Description);
         var response = await _mediator.Send(command);
         return response;
     }
@@ -40,7 +40,7 @@ public class NotesController : ControllerBase
         var response = await _mediator.Send(command);
         return response;
     }
-    
+
     [HttpPatch("/editNote")]
     public async Task<Note> EditNote(Note note)
     {
