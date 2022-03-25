@@ -1,6 +1,6 @@
-﻿using Domain;
+﻿using Application.Interfaces;
+using Domain;
 using Persistence;
-using Persistence.Interfaces;
 
 namespace NotesServer.Configurations;
 

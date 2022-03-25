@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
+using Application.Interfaces;
 using Domain;
 using MongoDB.Driver;
-using Persistence.Interfaces;
 
 namespace Persistence;
 

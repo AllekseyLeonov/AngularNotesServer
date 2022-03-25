@@ -1,5 +1,5 @@
-﻿using Domain;
-using Persistence.Interfaces;
+﻿using Application.Interfaces;
+using Domain;
 using MediatR;
 
 namespace Application.Actions.Notes;

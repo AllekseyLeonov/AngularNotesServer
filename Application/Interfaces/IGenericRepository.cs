@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using Domain;
 
-namespace Persistence.Interfaces;
+namespace Application.Interfaces;
 
 public interface IGenericRepository<T> where T : IEntity
 {
