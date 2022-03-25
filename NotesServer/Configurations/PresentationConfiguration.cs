@@ -3,6 +3,7 @@
 public class PresentationConfiguration
 {
     private static string devPolicyKey = "devCorsPolicy";
+    
     public static void ConfigureServices(IServiceCollection services)
     {
         services.AddControllers();
@@ -25,7 +26,7 @@ public class PresentationConfiguration
             app.UseSwaggerUI();
         }
 
-        app.UseCors("devCorsPolicy");
+        app.UseCors(devPolicyKey);
         app.UseHttpsRedirection();
         app.UseAuthorization();
         app.MapControllers();
